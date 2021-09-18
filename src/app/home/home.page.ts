@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Component, OnInit } from '@angular/core';
-import { Flashlight } from '@ionic-native/flashlight';
+import { Flashlight } from '@ionic-native/flashlight/';
 
 
 @Component({
@@ -8,19 +9,21 @@ import { Flashlight } from '@ionic-native/flashlight';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  checked: boolean;
-  constructor(private flash: Flashlight) { }
-
-  ngOnInit() {
-    this.checked= false;
+  checked: string;
+  constructor(private flash: Flashlight) {
   }
 
-  notify(){
-      if(this.checked && !(this.flash.isSwitchedOn)){
-        this.flash.switchOn();
-      }
-      if(!(this.checked) && this.flash.isSwitchedOn){
-        this.flash.switchOff();
-      }
+  ngOnInit() {
+  }
+
+  notify(event){
+    if(event.detail.checked){
+      this.flash.switchOn();
+      this.checked='ON';
+    }
+    else{
+      this.flash.switchOff();
+      this.checked='OFF';
+    }
   }
 }

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "FlashLightApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
